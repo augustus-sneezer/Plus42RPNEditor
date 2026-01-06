@@ -238,6 +238,7 @@ var
   StartPoint, EndPoint: TPoint;
   endchar: Char;
   dummy: Double;
+  Dummy2: Longint;
 begin
   if Key = 13 then begin
     Key := 0;
@@ -245,6 +246,8 @@ begin
     Laline := UTF8Length(aline);
     difference:=  FCarX - Laline - 2;
     if difference > 0 then begin
+      // PAD FROM EOL TO CURSOR POSITION
+      // SO RETURN WORKS AS EXPECTED.
       for i := 0 to difference do begin
         aline := aline + char(160);
       end;
@@ -302,8 +305,10 @@ begin
             end;
 
         2:  begin
+              { #todo : NUMERIC LBLS DON'T HAVE "" }
               if A in Alphacommands then begin
-                if B in LocalLabels then
+
+                if(B in LocalLabels) or (TryStrToInt(B, Dummy2)) = True  then
                   ThisString := A + ' ' + B
                 else begin
                   B := StringReplace(B, '"', '', [rfReplaceAll]);

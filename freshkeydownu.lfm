@@ -1,49 +1,50 @@
 object Form1: TForm1
   Left = 195
-  Height = 773
+  Height = 966
   Top = 100
-  Width = 396
+  Width = 495
   Caption = 'Form1'
-  ClientHeight = 773
-  ClientWidth = 396
+  ClientHeight = 966
+  ClientWidth = 495
+  DesignTimePPI = 120
   Menu = MainMenu1
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   object Panel1: TPanel
     Left = 0
-    Height = 193
-    Top = 580
-    Width = 396
+    Height = 241
+    Top = 725
+    Width = 495
     Align = alBottom
-    ClientHeight = 193
-    ClientWidth = 396
+    ClientHeight = 241
+    ClientWidth = 495
     TabOrder = 0
     object btnProgrammingMode: TButton
-      Left = 16
-      Height = 25
-      Top = 24
-      Width = 174
+      Left = 20
+      Height = 30
+      Top = 30
+      Width = 211
       AutoSize = True
       Caption = 'Toggle Programming Mode'
       TabOrder = 0
       OnClick = btnProgrammingModeClick
     end
     object btnImportFromPlus42: TButton
-      Left = 16
-      Height = 25
-      Top = 64
-      Width = 128
+      Left = 20
+      Height = 30
+      Top = 80
+      Width = 153
       AutoSize = True
       Caption = 'Import from Plus42'
       TabOrder = 1
       OnClick = btnImportFromPlus42Click
     end
     object btnExportToPlus42: TButton
-      Left = 16
-      Height = 25
-      Top = 104
-      Width = 113
+      Left = 20
+      Height = 30
+      Top = 130
+      Width = 136
       AutoSize = True
       Caption = 'Export To Plus42'
       TabOrder = 2
@@ -52,11 +53,11 @@ object Form1: TForm1
   end
   inline SynEdit1: TSynEdit
     Left = 0
-    Height = 580
+    Height = 725
     Top = 0
-    Width = 232
+    Width = 290
     Align = alLeft
-    Font.Height = -13
+    Font.Height = -16
     Font.Name = 'Courier New'
     Font.Pitch = fpFixed
     Font.Quality = fqNonAntialiased
@@ -64,7 +65,7 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 1
     OnKeyDown = SynEdit1KeyDown
-    Gutter.Width = 57
+    Gutter.Width = 72
     Gutter.MouseActions = <>
     RightGutter.Width = 0
     RightGutter.MouseActions = <>
@@ -517,13 +518,15 @@ object Form1: TForm1
     LineHighlightColor.Foreground = clNone
     inline SynLeftGutterPartList1: TSynGutterPartList
       object SynGutterMarks1: TSynGutterMarks
-        Width = 24
+        Width = 30
         MouseActions = <>
         MaxExtraMarksColums = 0
         Options = [sgmoDeDuplicateMarksOnOverflow]
+        MarkupInfo.Background = clBtnFace
+        MarkupInfo.Foreground = clNone
       end
       object SynGutterLineNumber1: TSynGutterLineNumber
-        Width = 17
+        Width = 21
         MouseActions = <>
         MarkupInfo.Background = clBtnFace
         MarkupInfo.Foreground = clNone
@@ -533,18 +536,22 @@ object Form1: TForm1
         LeadingZeros = False
       end
       object SynGutterChanges1: TSynGutterChanges
-        Width = 4
+        Width = 5
         MouseActions = <>
         ModifiedColor = 59900
         SavedColor = clGreen
+        MarkupInfo.Background = clNone
+        MarkupInfo.Foreground = clGreen
+        MarkupInfo.FrameColor = 59900
       end
       object SynGutterSeparator1: TSynGutterSeparator
-        Width = 2
+        Width = 3
         MouseActions = <>
         MarkupInfo.Background = clWhite
         MarkupInfo.Foreground = clGray
       end
       object SynGutterCodeFolding1: TSynGutterCodeFolding
+        Width = 13
         MouseActions = <>
         MarkupInfo.Background = clNone
         MarkupInfo.Foreground = clGray
@@ -554,10 +561,10 @@ object Form1: TForm1
     end
   end
   object ListBox1: TListBox
-    Left = 232
-    Height = 580
+    Left = 290
+    Height = 725
     Top = 0
-    Width = 80
+    Width = 100
     Align = alLeft
     Items.Strings = (
       'X=0?'
@@ -609,7 +616,7 @@ object Form1: TForm1
       'Σ+'
       'Σ-'
     )
-    ItemHeight = 15
+    ItemHeight = 20
     TabOrder = 2
     OnClick = ListBox1Click
   end
@@ -622,37 +629,37 @@ object Form1: TForm1
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    Left = 78
-    Top = 184
+    Left = 98
+    Top = 230
   end
   object Timer1: TTimer
     Interval = 50
     OnTimer = Timer1Timer
-    Left = 78
-    Top = 296
+    Left = 98
+    Top = 370
   end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
-    Left = 72
-    Top = 360
+    Left = 90
+    Top = 450
   end
   object OpenDialog1: TOpenDialog
-    Left = 78
-    Top = 19
+    Left = 98
+    Top = 24
   end
   object SaveDialog1: TSaveDialog
-    Left = 78
-    Top = 136
+    Left = 98
+    Top = 170
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
     FileName = 'SelectDirectory'
-    Left = 78
-    Top = 80
+    Left = 98
+    Top = 100
   end
   object MainMenu1: TMainMenu
-    Left = 78
-    Top = 240
+    Left = 98
+    Top = 300
     object FileStuff: TMenuItem
       Caption = 'File'
       object Load: TMenuItem
