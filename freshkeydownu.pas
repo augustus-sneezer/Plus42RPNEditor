@@ -1,0 +1,406 @@
+unit freshkeydownu;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, Types, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  SynEdit, SynEditHighlighter, SynEditMarkupHighAll, SynGutterBase,
+  SynGutterLineNumber, SynHighlighterAny, SynEditMiscClasses,
+  SynEditMarkupSpecialLine, customHighlighter, SetupSynedit, LCLType, StdCtrls,
+  Menus, LazUTF8, StrUtils, Plus42Comms, FileUtil, unit3, unit1
+  ;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    btnProgrammingMode: TButton;
+    btnImportFromPlus42: TButton;
+    btnExportToPlus42: TButton;
+    FontDialog1: TFontDialog;
+    ListBox1: TListBox;
+    MainMenu1: TMainMenu;
+    FileStuff: TMenuItem;
+    Load: TMenuItem;
+    Printout: TMenuItem;
+    clearprintout: TMenuItem;
+    copyprintout: TMenuItem;
+    Save: TMenuItem;
+    DefaultDir: TMenuItem;
+    OpenDialog1: TOpenDialog;
+    Panel1: TPanel;
+    SaveDialog1: TSaveDialog;
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
+    SynAnySyn1: TSynAnySyn;
+    SynEdit1: TSynEdit;
+    Timer1: TTimer;
+    procedure btnExportToPlus42Click( Sender: TObject);
+    procedure btnImportFromPlus42Click( Sender: TObject);
+    procedure Button1Click( Sender: TObject);
+    procedure btnProgrammingModeClick( Sender: TObject);
+    procedure copyprintoutClick( Sender: TObject);
+    procedure DefaultDirClick( Sender: TObject);
+    procedure FormClose( Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure ListBox1Click( Sender: TObject);
+    procedure LoadClick( Sender: TObject);
+    procedure PrintoutClick( Sender: TObject);
+    procedure SaveClick( Sender: TObject);
+    procedure SynEdit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure Timer1Timer(Sender: TObject);
+    procedure SplitaLine(ALine: string);
+    procedure splitaline2( APos: TPoint);
+    procedure splitaline3(aline: string; APos: TPoint);
+    procedure replaceline(aline: String; startPoint, EndPoint: TPoint);
+
+
+  private
+    FSelectedDirectory: String;
+    FHighlighter: TSynEditHighlighter;
+    FLineIndex,
+    FCarX,
+    FCarY: integer;
+    FCurrentLine: string;
+    Alphacommands,
+    LocalLabels,
+    Arithmeticals : TStringDynArray;
+
+  public
+
+
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+function myTimestamp: String;
+begin
+  Result := FormatDateTime('__yyyy-mm-dd_hh-nn-ss', Now);
+end;
+
+procedure TForm1. replaceline( aline: String; startPoint, EndPoint: TPoint);
+begin
+  synedit1.TextBetweenPoints[startPoint, EndPoint] := aline;
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  FSelectedDirectory := GetCurrentDir;
+  SetupSyn(SynEdit1);
+  FHighlighter := TSynEditHighlighter.Create(SynEdit1);
+  //FHighlighter.AddLineWithFocus('LBL "');
+  FLineIndex := 0;
+  Alphacommands:= SplitString('CLV CLP XEQ GTO AVIEW VIEW STO STO+ STO- STO* ' +
+                  'STO/ RCL RCL+ RCL- RCL* MVAR RCL/ LBL STO INPUT', ' ');
+
+  LocalLabels := splitstring('A B C D E F G H I J a b c d e', ' ');
+  Arithmeticals := SplitString('+ - / *', ' ');
+  //showmessage(GetCurrentDir);
+  if FileExists(FSelectedDirectory + '\Plus42.txt') then begin
+     Synedit1.Lines.LoadFromFile(FSelectedDirectory + '\Plus42.txt');
+  end;
+end;
+
+
+procedure TForm1.ListBox1Click(Sender : TObject);
+var
+  item : String;
+  StartPoint, EndPoint: TPoint;
+begin
+   if ListBox1.ItemIndex <> -1 then
+   begin
+     item :=   ListBox1.Items[ListBox1.ItemIndex];
+     case item of
+         'Y=0?': item := '0=? ST Y';
+         'Y≠0?': item := '0≠? ST Y';
+         'Y<0?': item := '0>? ST Y';
+         'Y>0?': item := '0<? ST Y';
+         'Y≤0?': item := '0≥? ST Y';
+         'Y≥0?': item := '0≤? ST Y' ;
+     end;
+     //synedit1.lines.Insert(SynEdit1.carety -1, item + sLineBreak);
+     ////:= synedit1.text + item + sLineBreak;
+     //
+     ////SynEdit1.SelStart := Length(SynEdit1.Text) - 1;
+     //SynEdit1.SetFocus;
+     //end;
+     StartPoint := Point(1, FCarY);
+     EndPoint := Point(length(FCurrentLine) + 1, FCarY);
+     SynEdit1.TextBetweenPoints[StartPoint, EndPoint] := item
+                                                        + LineEnding + FCurrentLine;
+     synedit1.CaretXY := Point( 1, FCarY + 1);
+     SynEdit1.SetFocus;
+   end;
+end;
+
+procedure TForm1. LoadClick( Sender: TObject);
+begin
+  with OpenDialog1 do begin
+    InitialDir := FSelectedDirectory;
+    if Execute then begin
+      SynEdit1.Lines.LoadFromFile(FileName);
+    end;
+  end;
+end;
+
+procedure TForm1. PrintoutClick( Sender: TObject);
+begin
+  form4.show;
+end;
+
+procedure TForm1. SaveClick( Sender: TObject);
+begin
+  with SaveDialog1 do begin
+    InitialDir := FSelectedDirectory;
+    if Execute then begin
+      SynEdit1.Lines.SaveToFile(FileName);
+    end;
+  end;
+
+end;
+
+procedure TForm1. Button1Click( Sender: TObject);
+begin
+  FontDialog1.Font := SynEdit1.Font;
+  if FontDialog1.Execute then
+    SynEdit1.Font.Assign(FontDialog1.Font);
+end;
+
+procedure TForm1. btnImportFromPlus42Click( Sender: TObject);
+var
+  e: string;
+begin
+  Synedit1.text := CopyFromPlus42(e).Text;
+end;
+
+procedure TForm1. btnExportToPlus42Click( Sender: TObject);
+var
+  e: string;
+begin
+  PasteToPlus42(SynEdit1.Lines, e);
+end;
+
+procedure TForm1. btnProgrammingModeClick( Sender: TObject);
+var
+  e: string;
+begin
+  ToggleProgrammingMode(e);
+end;
+
+procedure TForm1. copyprintoutClick( Sender: TObject);
+begin
+  //Form2.Show;
+end;
+
+procedure TForm1. DefaultDirClick( Sender: TObject);
+ var
+   SelectedPath: string;
+
+   DialogTitle: string;
+begin
+  with SelectDirectoryDialog1 do begin
+    if Execute then  begin
+       InitialDir := FSelectedDirectory;
+    DialogTitle := 'Choose default directory';
+      FSelectedDirectory := SelectDirectoryDialog1.FileName ;
+    end;
+
+  end;
+
+end;
+
+procedure TForm1. FormClose( Sender: TObject; var CloseAction: TCloseAction);
+begin
+  //SynEdit1.Lines.SaveToFile()
+  //ShowMessage(FSelectedDirectory + '\Saved.txt'  + myTimestamp);
+  SynEdit1.Lines.SaveToFile(FSelectedDirectory + '\Plus42.txt');
+
+end;
+
+procedure TForm1.SynEdit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  aline, A, B, C, D, ThisString: String;
+  LA, difference, Laline, LB: PtrInt;
+  i, x, CurrentLine: Integer;
+  StartOfLine, Midline, EndOfLine: Boolean;
+  AB, ABCD: TStringDynArray;
+  StartPoint, EndPoint: TPoint;
+  endchar: Char;
+  dummy: Double;
+begin
+  if Key = 13 then begin
+    Key := 0;
+    aline := Synedit1.Lines[FLineIndex];
+    Laline := UTF8Length(aline);
+    difference:=  FCarX - Laline - 2;
+    if difference > 0 then begin
+      for i := 0 to difference do begin
+        aline := aline + char(160);
+      end;
+
+    end;
+    //Synedit1.Lines.Add(aline);
+    StartOfLine := FCarX = 1;
+    Midline := (FCarX > 1) and (FCarX < Laline + 1);
+    EndOfLine := FCarX > Laline;
+    aline := StringReplace(aline, Char(160), '', [rfReplaceAll]);
+    if StartOfLine then begin
+      SynEdit1.TextBetweenPoints[Point(1, FCarY), Point(Length(aline) + 1, FCarY)] := lineending + aline;
+    end
+    else if Midline then begin
+      SplitaLine2(Point(FCarX, FCarY) );
+    end
+    else if EndOfLine then begin
+      // single character?
+      // single instruction?
+      // multipart line?
+      ABCD := SplitString(aline, ' ');
+      A := ABCD[0];
+      B := ABCD[1];
+      C := ABCD[2];
+      D := ABCD[3];
+      case Length(ABCD) of
+        1:  begin
+              if Length(A) = 1 then begin                   // single char
+                StartPoint := Point(1,FCarY);               // or single number
+                EndPoint := Point(Laline + 1, FCarY );
+                replaceline(aline + lineending, StartPoint, EndPoint);
+                SynEdit1.CaretXY := Point(1, FCarY + 1);
+              end
+
+              else  begin
+                endchar := aline[Length(aline)];           // number followed by
+                if endchar in Arithmeticals then begin     // operator ?
+                  AB := splitstring(aline, endchar);
+                  if TryStrToFloat(ab[0], dummy)  then     //
+                    splitaline2(Point(FCarX - 1, FCarY))
+                  else begin
+                    StartPoint := Point(1,FCarY);                //not a number
+                    EndPoint := Point(Length(aline) + 1, FCarY); // followed by an operator
+                    replaceline(Aline + LineEnding , StartPoint, endPoint);
+                    SynEdit1.CaretXY := point(1, FcarY + 1);
+                  end;
+                end
+                else begin
+                  StartPoint := Point(1,FCarY);               // anything else;
+                  EndPoint := Point(1, FCarY + 1);
+                  replaceline(Aline + LineEnding + lineending, StartPoint, endPoint);
+                  SynEdit1.CaretXY := point(1, FcarY + 1);
+                end;
+              end
+            end;
+
+        2:  begin
+              if A in Alphacommands then begin
+                if B in LocalLabels then
+                  ThisString := A + ' ' + B
+                else begin
+                  B := StringReplace(B, '"', '', [rfReplaceAll]);
+                  ThisString := A + ' ' + '"' + B + '"';
+                end
+              End;
+              StartPoint := Point(1, FCarY);
+              EndPoint := Point(Length(aline) + 1, FCarY);
+              replaceline(ThisString + LineEnding, StartPoint, EndPoint);
+              SynEdit1.CaretXY := point(1, FcarY + 1);
+
+
+
+
+            end;
+         3,4,5: begin
+               StartPoint := Point(1, FCarY);                // anything else
+              EndPoint := Point(Length(aline) + 1, FCarY);   //  need to include
+              replaceline(Aline + LineEnding, StartPoint, EndPoint); // KEY 1 XEQ etc
+              SynEdit1.CaretXY := point(1, FcarY + 1);
+              end;
+  end;
+
+  end;
+
+
+end;
+    end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+  FLineIndex := Synedit1.CaretY -1;
+  FCurrentLine := Synedit1.Lines[FLineIndex];
+  FCarX := SynEdit1.CaretX;
+  FCarY := SynEdit1.CaretY;
+end;
+
+procedure TForm1. SplitaLine( ALine: string);
+var
+  LineText, PartBefore, PartAfter: string;
+  CaretPos: TPoint;
+  InsertPos: TPoint;
+begin
+  CaretPos := SynEdit1.CaretXY;
+  //LineText := SynEdit1.Lines[FCurrentLine];
+
+  PartBefore := UTF8Copy(aline, 1, FCarX - 1);
+  PartAfter := UTF8Copy(aline, FCarX, MaxInt);
+  SynEdit1.BeginUndoBlock;
+  try
+    SynEdit1.TextBetweenPoints[Point(1, FCarY), Point(Length(aline) + 1, FCarY)] := PartBefore + lineending;
+    InsertPos := Point(1, FCarY + 1);
+    SynEdit1.TextBetweenPoints[InsertPos, InsertPos] :=  PartAfter;
+  finally
+    SynEdit1.EndUndoBlock;
+  end;
+  SynEdit1.CaretXY := Point(1, FLineIndex + 2);
+
+end;
+
+procedure TForm1. splitaline2(APos: TPoint);
+
+ var
+  PartBefore, PartAfter, s, A, B: string;
+  startPoint, EndPoint: TPoint;
+  x: Integer;
+begin
+
+  A := UTF8Copy(FCurrentLine, 1, APos.X - 1 );
+  B := UTF8Copy(FCurrentLine, APos.X, MaxInt);
+
+  StartPoint := Point(1, FCarY);
+  EndPoint := Point(length(FCurrentLine) + 1, FCarY);
+  synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B + lineending;
+  synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 2);
+
+  end;
+
+procedure TForm1.splitaline3(aline: string; APos: TPoint);
+
+ var
+  PartBefore, PartAfter, s, A, B: string;
+  startPoint, EndPoint: TPoint;
+  x: Integer;
+begin
+
+  A := UTF8Copy(aline, 1, APos.X - 1 );
+  B := UTF8Copy(aline, APos.X, MaxInt);
+
+  StartPoint := Point(1, FCarY);
+  EndPoint := Point(length(aline) + 1, FCarY);
+  synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B ;
+  synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 1);
+
+  end;
+
+
+
+end.
+

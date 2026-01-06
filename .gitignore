@@ -1,0 +1,49 @@
+# Lazarus/Delphi compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+*.bundle
+*.app
+
+# Compiled units
+*.dcu
+*.ppu
+*.o
+*.a
+*.su
+
+# Backup files
+*.~*
+*.bak
+*.backup
+
+# IDE files
+*.identcache
+*.local
+*.synchex
+
+# Project session files
+*.dsk
+*.ddp
+
+# Package files
+*.bpl
+*.dcp
+
+# Temp files
+*.tmp
+*.log
+
+# Lazarus project state
+*.compiled
+*.or
+*.stat
+
+# Folders to ignore
+__history/
+backup/
+lib/
+backup/
+deploy/
+dist/
