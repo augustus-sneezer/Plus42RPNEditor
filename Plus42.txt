@@ -44,11 +44,9 @@ FIX 04
 END
 dog
 dog
-dog
-
-dog
-dog
-dog
-dog
+cat
+cat
+cat
+cat
 
 

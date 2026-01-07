@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, freshkeydownu, CustomHighlighter, SetupSynedit, Plus42Comms, Unit1;
+  Forms, freshkeydownu, CustomHighlighter, SetupSynedit, Plus42Comms;
 
 {$R *.res}
 
@@ -22,7 +22,6 @@ begin
   {$POP}
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
-  Application. CreateForm( TForm4, Form4);
   Application.Run;
 end.
 

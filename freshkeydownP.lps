@@ -8,9 +8,9 @@
       <Unit>
         <Filename Value="freshkeydownP.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="6"/>
-        <CursorPos Y="27"/>
-        <UsageCount Value="194"/>
+        <EditorIndex Value="5"/>
+        <CursorPos Y="26"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,13 +20,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="90"/>
-        <CursorPos Y="107"/>
-        <UsageCount Value="194"/>
+        <TopLine Value="382"/>
+        <CursorPos X="7" Y="405"/>
+        <UsageCount Value="200"/>
         <Bookmarks Count="3">
-          <Item0 X="8" Y="690" Left="1" Top="657" ID="9"/>
-          <Item1 X="15" Y="80" Left="1" Top="1"/>
-          <Item2 X="40" Y="369" Left="1" Top="241" ID="5"/>
+          <Item0 X="8" Y="682" Left="1" Top="649" ID="9"/>
+          <Item1 X="15" Y="75" Left="1" Top="1"/>
+          <Item2 X="40" Y="345" Left="1" Top="223" ID="5"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -35,55 +35,51 @@
         <Filename Value="customhighlighter.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CustomHighlighter"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="32"/>
         <CursorPos X="60" Y="40"/>
-        <UsageCount Value="194"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="setupsynedit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SetupSynedit"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="17"/>
         <CursorPos X="38" Y="24"/>
-        <UsageCount Value="194"/>
+        <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="plus42comms.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Plus42Comms"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="483"/>
         <CursorPos Y="503"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="133"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="Form4"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="58"/>
-        <CursorPos Y="75"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="16" Y="6"/>
         <UsageCount Value="95"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit3.pas"/>
         <ComponentName Value="Form3"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="9"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="12"/>
         <CursorPos X="17" Y="39"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -108,97 +104,13 @@
         <ComponentName Value="Form2"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <CursorPos X="11"/>
-        <UsageCount Value="57"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="126" Column="61" TopLine="113"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="152" Column="20" TopLine="128"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="154" Column="25" TopLine="143"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="156" TopLine="142"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="165" Column="3" TopLine="161"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="82" Column="5" TopLine="66"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="167" Column="15" TopLine="153"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="185" Column="25" TopLine="164"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="157"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="160" Column="18" TopLine="160"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="167" Column="2" TopLine="161"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="190" Column="5" TopLine="160"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="171" Column="16" TopLine="147"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="178" Column="21" TopLine="65"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="161" Column="25" TopLine="65"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="160" Column="10" TopLine="140"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="138" Column="36" TopLine="116"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="70" Column="51" TopLine="62"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="163" Column="17" TopLine="53"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="140" TopLine="135"/>
-      </Position>
-      <Position>
-        <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="162" TopLine="135"/>
-      </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
         <Caret Line="155" TopLine="130"/>
@@ -235,6 +147,90 @@
         <Filename Value="freshkeydownu.pas"/>
         <Caret Line="174" Column="5" TopLine="140"/>
       </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="446" Column="49" TopLine="433"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="558" TopLine="527"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="557" TopLine="526"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="556" TopLine="525"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="557" TopLine="525"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="556" TopLine="524"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="555" TopLine="523"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="554" TopLine="522"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="162" Column="5" TopLine="128"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="320" TopLine="303"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="262" Column="5" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="236" Column="12" TopLine="219"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="255" Column="5" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="247" Column="40" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="251" Column="5" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="252" Column="4" TopLine="235"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="246" Column="11" TopLine="233"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="264" Column="77" TopLine="230"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="259" Column="7" TopLine="233"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="188" Column="75" TopLine="481"/>
+      </Position>
+      <Position>
+        <Filename Value="freshkeydownu.pas"/>
+        <Caret Line="400" Column="37" TopLine="381"/>
+      </Position>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -256,6 +252,20 @@
         <WatchKind Value="wpkWrite"/>
         <Source Value="plus42comms.pas"/>
         <Line Value="165"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="freshkeydownu.pas"/>
+        <Line Value="182"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="freshkeydownu.pas"/>
+        <Line Value="195"/>
       </Item>
     </BreakPoints>
   </Debugging>

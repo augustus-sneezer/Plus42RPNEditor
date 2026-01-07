@@ -2,10 +2,10 @@ object Form1: TForm1
   Left = 685
   Height = 966
   Top = 49
-  Width = 495
+  Width = 425
   Caption = 'Form1'
   ClientHeight = 966
-  ClientWidth = 495
+  ClientWidth = 425
   DesignTimePPI = 120
   Menu = MainMenu1
   LCLVersion = '4.4.0.0'
@@ -13,27 +13,26 @@ object Form1: TForm1
   OnCreate = FormCreate
   object Panel1: TPanel
     Left = 0
-    Height = 241
-    Top = 725
-    Width = 495
+    Height = 254
+    Top = 712
+    Width = 425
     Align = alBottom
-    ClientHeight = 241
-    ClientWidth = 495
+    ClientHeight = 254
+    ClientWidth = 425
     TabOrder = 0
     object btnProgrammingMode: TButton
-      Left = 20
-      Height = 30
-      Top = 30
+      Left = 184
+      Height = 150
+      Top = 40
       Width = 211
-      AutoSize = True
       Caption = 'Toggle Programming Mode'
       TabOrder = 0
       OnClick = btnProgrammingModeClick
     end
     object btnImportFromPlus42: TButton
-      Left = 20
+      Left = 16
       Height = 30
-      Top = 80
+      Top = 40
       Width = 153
       AutoSize = True
       Caption = 'Import from Plus42'
@@ -41,36 +40,18 @@ object Form1: TForm1
       OnClick = btnImportFromPlus42Click
     end
     object btnExportToPlus42: TButton
-      Left = 20
+      Left = 16
       Height = 30
-      Top = 130
-      Width = 136
-      AutoSize = True
+      Top = 160
+      Width = 153
       Caption = 'Export To Plus42'
       TabOrder = 2
       OnClick = btnExportToPlus42Click
     end
-    object Button1: TButton
-      Left = 312
-      Height = 31
-      Top = 60
-      Width = 94
-      Caption = 'Button1'
-      TabOrder = 3
-    end
-    object Button2: TButton
-      Left = 317
-      Height = 31
-      Top = 116
-      Width = 94
-      Caption = 'Button2'
-      TabOrder = 4
-      OnClick = Button2Click
-    end
   end
   inline SynEdit1: TSynEdit
     Left = 0
-    Height = 725
+    Height = 712
     Top = 0
     Width = 290
     Align = alLeft
@@ -579,7 +560,7 @@ object Form1: TForm1
   end
   object ListBox1: TListBox
     Left = 290
-    Height = 725
+    Height = 712
     Top = 0
     Width = 100
     Align = alLeft
@@ -703,17 +684,6 @@ object Form1: TForm1
         OnClick = Button2Click
       end
     end
-    object Printout: TMenuItem
-      Caption = 'Printout'
-      OnClick = PrintoutClick
-      object clearprintout: TMenuItem
-        Caption = 'Clear Printout'
-      end
-      object copyprintout: TMenuItem
-        Caption = 'Copy Printout'
-        OnClick = copyprintoutClick
-      end
-    end
   end
   object ReplaceDialog1: TReplaceDialog
     FindText = 'dog'
@@ -725,6 +695,7 @@ object Form1: TForm1
     Top = 534
   end
   object FindDialog1: TFindDialog
+    OnFind = FindDialog1Find
     Left = 90
     Top = 616
   end

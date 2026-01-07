@@ -9,7 +9,7 @@ uses
   SynEdit, SynEditHighlighter, SynEditMarkupHighAll, SynGutterBase,
   SynGutterLineNumber, SynHighlighterAny, SynEditMiscClasses,
   SynEditMarkupSpecialLine, customHighlighter, SetupSynedit, LCLType, StdCtrls,
-  Menus, LazUTF8, StrUtils, Plus42Comms, FileUtil, unit3, unit1, SynEditSearch ,
+  Menus, LazUTF8, StrUtils, Plus42Comms, FileUtil,  SynEditSearch ,
   SynEditTypes
   ;
 
@@ -21,8 +21,6 @@ type
     btnProgrammingMode: TButton;
     btnImportFromPlus42: TButton;
     btnExportToPlus42: TButton;
-    Button1: TButton;
-    Button2: TButton;
     FindDialog1: TFindDialog;
     FontDialog1: TFontDialog;
     ListBox1: TListBox;
@@ -32,9 +30,6 @@ type
     Find: TMenuItem;
     FindText: TMenuItem;
     Replace: TMenuItem;
-    Printout: TMenuItem;
-    clearprintout: TMenuItem;
-    copyprintout: TMenuItem;
     ReplaceDialog1: TReplaceDialog;
     Save: TMenuItem;
     DefaultDir: TMenuItem;
@@ -50,14 +45,14 @@ type
     procedure Button1Click( Sender: TObject);
     procedure btnProgrammingModeClick( Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure copyprintoutClick( Sender: TObject);
+    //procedure copyprintoutClick( Sender: TObject);
     procedure DefaultDirClick( Sender: TObject);
     procedure FindTextClick(Sender: TObject);
     procedure FormClose( Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure ListBox1Click( Sender: TObject);
     procedure LoadClick( Sender: TObject);
-    procedure PrintoutClick( Sender: TObject);
+    //procedure PrintoutClick( Sender: TObject);
     procedure SaveClick( Sender: TObject);
     procedure SynEdit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
       );
@@ -83,12 +78,7 @@ type
     Arithmeticals : TStringDynArray;
 
     procedure FindNextOccurrence;
-
-
-
   public
-
-
   end;
 
 var
@@ -106,95 +96,87 @@ end;
                                                              // Menu item click - just shows the dialog
 
 
-// AUTOMATICALLY called when user clicks "Find Next" in Replace dialog
+
+//procedure TForm1.ReplaceDialog1Find(Sender: TObject);
+//var
+//  Options: TSynSearchOptions;
+//begin
+//  Options := [ssoFindContinue];
+//
+//  if frMatchCase in ReplaceDialog1.Options then
+//    Include(Options, ssoMatchCase);
+//
+//  if frWholeWord in ReplaceDialog1.Options then
+//    Include(Options, ssoWholeWord);
+//
+//  if not (frDown in ReplaceDialog1.Options) then
+//    Include(Options, ssoBackwards);
+//
+//  SynEdit1.SelText := '';  // Clear any selection
+//
+//  if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
+//  begin
+//    ShowMessage('Text "' + ReplaceDialog1.FindText + '" not found.');
+//  end
+//  else
+//  begin
+//    SynEdit1.SelectWord;  // Highlight found text
+//  end;
+//end;
+//
+
 procedure TForm1.ReplaceDialog1Find(Sender: TObject);
 var
   Options: TSynSearchOptions;
 begin
-  Options := [ssoFindContinue];
+  Options := [ssoFindContinue]; // Continue from current cursor position
 
-  if frMatchCase in ReplaceDialog1.Options then
-    Include(Options, ssoMatchCase);
-
-  if frWholeWord in ReplaceDialog1.Options then
-    Include(Options, ssoWholeWord);
-
-  if not (frDown in ReplaceDialog1.Options) then
-    Include(Options, ssoBackwards);
-
-  SynEdit1.SelText := '';  // Clear any selection
+  if frMatchCase in ReplaceDialog1.Options then Include(Options, ssoMatchCase);
+  if frWholeWord in ReplaceDialog1.Options then Include(Options, ssoWholeWord);
+  if not (frDown in ReplaceDialog1.Options) then Include(Options, ssoBackwards);
 
   if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
-  begin
-    ShowMessage('Text "' + ReplaceDialog1.FindText + '" not found.');
-  end
-  else
-  begin
-    SynEdit1.SelectWord;  // Highlight found text
-  end;
+    ShowMessage('Text not found.');
 end;
 
-// AUTOMATICALLY called when user clicks "Replace" or "Replace All"
 procedure TForm1.ReplaceDialog1Replace(Sender: TObject);
 var
   Options: TSynSearchOptions;
-  ReplaceCount: Integer;
 begin
-  // frReplaceAll is ONLY true if user clicked "Replace All" button
+  Options := [ssoFindContinue];
+  if frMatchCase in ReplaceDialog1.Options then Include(Options, ssoMatchCase);
+  if frWholeWord in ReplaceDialog1.Options then Include(Options, ssoWholeWord);
+
   if frReplaceAll in ReplaceDialog1.Options then
   begin
-    // User explicitly clicked "Replace All"
-    Options := [ssoReplace, ssoReplaceAll];
-    if frMatchCase in ReplaceDialog1.Options then
-      Include(Options, ssoMatchCase);
-    if frWholeWord in ReplaceDialog1.Options then
-      Include(Options, ssoWholeWord);
-
-    ReplaceCount := SynEdit1.SearchReplace(
-      ReplaceDialog1.FindText,
-      ReplaceDialog1.ReplaceText,
-      Options
-    );
-
-    ShowMessage(IntToStr(ReplaceCount) + ' replacements made.');
-    // Dialog closes after Replace All
+    Include(Options, ssoReplaceAll);
+    SynEdit1.SearchReplace(ReplaceDialog1.FindText, ReplaceDialog1.ReplaceText, Options);
   end
   else
   begin
-    // User explicitly clicked "Replace" (single replace)
-    // Replace whatever is currently selected
-    SynEdit1.SelText := ReplaceDialog1.ReplaceText;
-    // Dialog stays open for next user action
+    // Perform a single replace
+    Include(Options, ssoReplace);
+    if SynEdit1.SearchReplace(ReplaceDialog1.FindText, ReplaceDialog1.ReplaceText, Options) = 0 then
+      ShowMessage('No match found to replace.');
   end;
 end;
+
 procedure TForm1.FindDialog1Find(Sender: TObject);
 var
   Options: TSynSearchOptions;
-  FoundPos: Integer;
 begin
-  // Clear ONLY the current selection (if any), not all text
-  SynEdit1.SelText := '';
 
-  // Set search options
   Options := [ssoFindContinue];
-
-  if frMatchCase in FindDialog1.Options then
-    Include(Options, ssoMatchCase);
-
-  if frWholeWord in FindDialog1.Options then
-    Include(Options, ssoWholeWord);
-
-  if not (frDown in FindDialog1.Options) then
-    Include(Options, ssoBackwards);
-
-  // Perform the search
-  FoundPos := SynEdit1.SearchReplace(FindDialog1.FindText, '', Options);
-
-  if FoundPos = 0 then
+  if frMatchCase in FindDialog1.Options then Include(Options, ssoMatchCase);
+  if frWholeWord in FindDialog1.Options then Include(Options, ssoWholeWord);
+  if not (frDown in FindDialog1.Options) then Include(Options, ssoBackwards);
+  if SynEdit1.SearchReplace(FindDialog1.FindText, FindDialog1.FindText, Options) = 0 then
   begin
-    // Text not found - wrap to beginning
-    //ShowMessage('Text "' + FindDialog1.FindText + '" not found.');
-    SynEdit1.CaretXY := Point(1, 1);
+    ShowMessage('Text "' + FindDialog1.FindText + '" not found.');
+  end
+  else
+  begin
+    SynEdit1.SetFocus;
   end;
 end;
 
@@ -287,10 +269,7 @@ begin
   end;
 end;
 
-procedure TForm1. PrintoutClick( Sender: TObject);
-begin
-  form4.show;
-end;
+
 
 procedure TForm1. SaveClick( Sender: TObject);
 begin
@@ -337,10 +316,7 @@ begin
         ReplaceDialog1Replace(Sender);
 end;
 
-procedure TForm1. copyprintoutClick( Sender: TObject);
-begin
-  //Form2.Show;
-end;
+
 
 procedure TForm1. DefaultDirClick( Sender: TObject);
  var
@@ -418,11 +394,17 @@ begin
       // single character?
       // single instruction?
       // multipart line?
+      //ABCD := SplitString(aline, ' ');
+      //A := ABCD[0];
+      //B := ABCD[1];
+      //C := ABCD[2];
+      //D := ABCD[3];
       ABCD := SplitString(aline, ' ');
-      A := ABCD[0];
-      B := ABCD[1];
-      C := ABCD[2];
-      D := ABCD[3];
+      A := ''; B := ''; C := ''; D := ''; // Initialize to empty
+      if Length(ABCD) > 0 then A := ABCD[0];
+      if Length(ABCD) > 1 then B := ABCD[1];
+      if Length(ABCD) > 2 then C := ABCD[2];
+      if Length(ABCD) > 3 then D := ABCD[3];
       case Length(ABCD) of
         1:  begin
               if Length(A) = 1 then begin                   // single char
@@ -532,10 +514,15 @@ begin
 
   StartPoint := Point(1, FCarY);
   EndPoint := Point(length(FCurrentLine) + 1, FCarY);
-  synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B + lineending;
-  synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 2);
+  SynEdit1.BeginUndoBlock;
+  try
+	synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B + lineending;
+	synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 2);
+  finally
+    SynEdit1.EndUndoBlock;
+ end;
 
-  end;
+end;
 
 procedure TForm1.splitaline3(aline: string; APos: TPoint);
 
@@ -548,11 +535,16 @@ begin
   A := UTF8Copy(aline, 1, APos.X - 1 );
   B := UTF8Copy(aline, APos.X, MaxInt);
 
+
   StartPoint := Point(1, FCarY);
   EndPoint := Point(length(aline) + 1, FCarY);
-  synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B ;
-  synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 1);
-
+  SynEdit1.BeginUndoBlock;
+    try
+	    synedit1.TextBetweenPoints[StartPoint, EndPoint] := A + LineEnding + B ;
+        synedit1.CaretXY := Point(1,  SynEdit1.CaretY + 1);
+   finally
+        SynEdit1.EndUndoBlock;
+   end;
   end;
 
 
