@@ -47,3 +47,4 @@ lib/
 backup/
 deploy/
 dist/
+*.fresh

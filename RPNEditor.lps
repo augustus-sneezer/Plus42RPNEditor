@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="RPNEditor.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="20" Y="13"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="freshkeydownu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="395"/>
+        <CursorPos X="67" Y="419"/>
+        <UsageCount Value="200"/>
+        <Bookmarks Count="3">
+          <Item0 X="8" Y="564" Left="1" Top="531" ID="9"/>
+          <Item1 Left="1" Top="1"/>
+          <Item2 Left="1" Top="1" ID="5"/>
+        </Bookmarks>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="customhighlighter.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CustomHighlighter"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="32"/>
+        <CursorPos X="60" Y="40"/>
+        <UsageCount Value="200"/>
+      </Unit>
+      <Unit>
+        <Filename Value="setupsynedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SetupSynedit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="38" Y="24"/>
+        <UsageCount Value="200"/>
+      </Unit>
+      <Unit>
+        <Filename Value="plus42comms.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Plus42Comms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="483"/>
+        <CursorPos Y="503"/>
+        <UsageCount Value="133"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unit1.pas"/>
+        <ComponentName Value="Form4"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="16" Y="6"/>
+        <UsageCount Value="95"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unit3.pas"/>
+        <ComponentName Value="Form3"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="17" Y="39"/>
+        <UsageCount Value="61"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unit2.pas"/>
+        <ComponentName Value="Form2"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="24"/>
+        <CursorPos X="23" Y="34"/>
+        <UsageCount Value="16"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus4\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2960"/>
+        <CursorPos X="48" Y="2966"/>
+        <UsageCount Value="24"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unit5.pas"/>
+        <ComponentName Value="Form2"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="37" Y="20"/>
+        <UsageCount Value="61"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="-1"/>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="plus42comms.pas"/>
+        <Line Value="188"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="plus42comms.pas"/>
+        <Line Value="165"/>
+      </Item>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="freshkeydownu.pas"/>
+        <Line Value="1"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
+</CONFIG>

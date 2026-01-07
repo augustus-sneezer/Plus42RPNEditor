@@ -1,4 +1,4 @@
-program freshkeydownP;
+program RPNEditor;
 
 {$mode objfpc}{$H+}
 
@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, freshkeydownu, CustomHighlighter, SetupSynedit, Plus42Comms;
+  Forms, rpneditoru, CustomHighlighter, SetupSynedit, Plus42Comms;
 
 {$R *.res}
 
