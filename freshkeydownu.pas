@@ -23,6 +23,7 @@ type
     btnExportToPlus42: TButton;
     Button1: TButton;
     Button2: TButton;
+    FindDialog1: TFindDialog;
     FontDialog1: TFontDialog;
     ListBox1: TListBox;
     MainMenu1: TMainMenu;
@@ -51,6 +52,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure copyprintoutClick( Sender: TObject);
     procedure DefaultDirClick( Sender: TObject);
+    procedure FindTextClick(Sender: TObject);
     procedure FormClose( Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure ListBox1Click( Sender: TObject);
@@ -66,6 +68,7 @@ type
     procedure replaceline(aline: String; startPoint, EndPoint: TPoint);
     procedure ReplaceDialog1Replace(Sender: TObject);
     procedure ReplaceDialog1Find(Sender: TObject);
+    procedure FindDialog1Find(Sender: TObject);
 
 
   private
@@ -78,7 +81,9 @@ type
     Alphacommands,
     LocalLabels,
     Arithmeticals : TStringDynArray;
+
     procedure FindNextOccurrence;
+
 
 
   public
@@ -98,76 +103,101 @@ function myTimestamp: String;
 begin
   Result := FormatDateTime('__yyyy-mm-dd_hh-nn-ss', Now);
 end;
+                                                             // Menu item click - just shows the dialog
 
 
-procedure TForm1.ReplaceDialog1Replace(Sender: TObject);
+// AUTOMATICALLY called when user clicks "Find Next" in Replace dialog
+procedure TForm1.ReplaceDialog1Find(Sender: TObject);
 var
   Options: TSynSearchOptions;
 begin
-  // Check if we're doing "Replace All"
+  Options := [ssoFindContinue];
+
+  if frMatchCase in ReplaceDialog1.Options then
+    Include(Options, ssoMatchCase);
+
+  if frWholeWord in ReplaceDialog1.Options then
+    Include(Options, ssoWholeWord);
+
+  if not (frDown in ReplaceDialog1.Options) then
+    Include(Options, ssoBackwards);
+
+  SynEdit1.SelText := '';  // Clear any selection
+
+  if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
+  begin
+    ShowMessage('Text "' + ReplaceDialog1.FindText + '" not found.');
+  end
+  else
+  begin
+    SynEdit1.SelectWord;  // Highlight found text
+  end;
+end;
+
+// AUTOMATICALLY called when user clicks "Replace" or "Replace All"
+procedure TForm1.ReplaceDialog1Replace(Sender: TObject);
+var
+  Options: TSynSearchOptions;
+  ReplaceCount: Integer;
+begin
+  // frReplaceAll is ONLY true if user clicked "Replace All" button
   if frReplaceAll in ReplaceDialog1.Options then
   begin
-    // Clear current selection first
-    //SynEdit1.SelectAll;
-    //SynEdit1.SelText := '';
-
+    // User explicitly clicked "Replace All"
     Options := [ssoReplace, ssoReplaceAll];
     if frMatchCase in ReplaceDialog1.Options then
       Include(Options, ssoMatchCase);
     if frWholeWord in ReplaceDialog1.Options then
       Include(Options, ssoWholeWord);
 
-    SynEdit1.SearchReplace(ReplaceDialog1.FindText, ReplaceDialog1.ReplaceText, Options);
+    ReplaceCount := SynEdit1.SearchReplace(
+      ReplaceDialog1.FindText,
+      ReplaceDialog1.ReplaceText,
+      Options
+    );
+
+    ShowMessage(IntToStr(ReplaceCount) + ' replacements made.');
+    // Dialog closes after Replace All
   end
   else
   begin
-    // Single replace operation
-    if SynEdit1.SelText = ReplaceDialog1.FindText then
-    begin
-      // Replace the selected text
-      SynEdit1.SelText := ReplaceDialog1.ReplaceText;
-    end;
-
-    // Find next occurrence
-    FindNextOccurrence;
+    // User explicitly clicked "Replace" (single replace)
+    // Replace whatever is currently selected
+    SynEdit1.SelText := ReplaceDialog1.ReplaceText;
+    // Dialog stays open for next user action
   end;
 end;
-//procedure TForm1.ReplaceDialog1Find(Sender: TObject);
-//var
-//  Options: TSynSearchOptions;
-//begin
-//  Options := [ssoFindContinue];
-//  if frMatchCase in ReplaceDialog1.Options then
-//    Include(Options, ssoMatchCase);
-//  if frWholeWord in ReplaceDialog1.Options then
-//    Include(Options, ssoWholeWord);
-//
-//  if not SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) then
-//  begin
-//    ShowMessage('Text not found');
-//  end;
-//end;
-
-procedure TForm1.ReplaceDialog1Find(Sender: TObject);
+procedure TForm1.FindDialog1Find(Sender: TObject);
 var
   Options: TSynSearchOptions;
+  FoundPos: Integer;
 begin
-  // Without ssoFindContinue, it just finds the first occurrence forever
+  // Clear ONLY the current selection (if any), not all text
+  SynEdit1.SelText := '';
+
+  // Set search options
   Options := [ssoFindContinue];
 
-  if frMatchCase in ReplaceDialog1.Options then Include(Options, ssoMatchCase);
-  if frWholeWord in ReplaceDialog1.Options then Include(Options, ssoWholeWord);
+  if frMatchCase in FindDialog1.Options then
+    Include(Options, ssoMatchCase);
 
-  // SearchDirection logic
-  if not (frDown in ReplaceDialog1.Options) then Include(Options, ssoBackwards);
+  if frWholeWord in FindDialog1.Options then
+    Include(Options, ssoWholeWord);
 
-  // If SearchReplace returns 0, it means no match was found
-  //if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
-  //  ShowMessage('Match not found for: ' + ReplaceDialog1.FindText);
+  if not (frDown in FindDialog1.Options) then
+    Include(Options, ssoBackwards);
 
-  // Force SynEdit to scroll to the found text
-  SynEdit1.SetFocus;
+  // Perform the search
+  FoundPos := SynEdit1.SearchReplace(FindDialog1.FindText, '', Options);
+
+  if FoundPos = 0 then
+  begin
+    // Text not found - wrap to beginning
+    //ShowMessage('Text "' + FindDialog1.FindText + '" not found.');
+    SynEdit1.CaretXY := Point(1, 1);
+  end;
 end;
+
 procedure TForm1.FindNextOccurrence;
 var
   Options: TSynSearchOptions;
@@ -326,6 +356,12 @@ begin
     end;
 
   end;
+
+end;
+
+procedure TForm1.FindTextClick(Sender: TObject);
+begin
+      FindDialog1.Execute;  // Show the dialog
 
 end;
 

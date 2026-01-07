@@ -696,7 +696,7 @@ object Form1: TForm1
       Caption = 'Find'
       object FindText: TMenuItem
         Caption = 'Find'
-        OnClick = ReplaceDialog1Find
+        OnClick = FindTextClick
       end
       object Replace: TMenuItem
         Caption = 'Replace'
@@ -723,5 +723,9 @@ object Form1: TForm1
     OnReplace = ReplaceDialog1Replace
     Left = 100
     Top = 534
+  end
+  object FindDialog1: TFindDialog
+    Left = 90
+    Top = 616
   end
 end

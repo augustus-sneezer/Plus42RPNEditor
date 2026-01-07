@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="6"/>
         <CursorPos Y="27"/>
-        <UsageCount Value="190"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,13 +20,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="103"/>
-        <CursorPos X="3" Y="107"/>
-        <UsageCount Value="190"/>
+        <TopLine Value="90"/>
+        <CursorPos Y="107"/>
+        <UsageCount Value="194"/>
         <Bookmarks Count="3">
-          <Item0 X="8" Y="654" Left="1" Top="621" ID="9"/>
-          <Item1 X="15" Y="77" Left="1" Top="1"/>
-          <Item2 X="40" Y="333" Left="1" Top="211" ID="5"/>
+          <Item0 X="8" Y="690" Left="1" Top="657" ID="9"/>
+          <Item1 X="15" Y="80" Left="1" Top="1"/>
+          <Item2 X="40" Y="369" Left="1" Top="241" ID="5"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -38,7 +38,7 @@
         <EditorIndex Value="3"/>
         <TopLine Value="32"/>
         <CursorPos X="60" Y="40"/>
-        <UsageCount Value="190"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -48,7 +48,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="17"/>
         <CursorPos X="38" Y="24"/>
-        <UsageCount Value="190"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -58,7 +58,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="483"/>
         <CursorPos Y="503"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="126"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -71,7 +71,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="58"/>
         <CursorPos Y="75"/>
-        <UsageCount Value="91"/>
+        <UsageCount Value="95"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -83,7 +83,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="9"/>
         <CursorPos X="17" Y="39"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="57"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -94,14 +94,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="23" Y="34"/>
-        <UsageCount Value="17"/>
+        <UsageCount Value="16"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus4\lcl\include\control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2960"/>
         <CursorPos X="48" Y="2966"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="24"/>
       </Unit>
       <Unit>
         <Filename Value="unit5.pas"/>
@@ -110,130 +110,130 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <CursorPos X="11"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="57"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="270" Column="5" TopLine="254"/>
+        <Caret Line="126" Column="61" TopLine="113"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="234" Column="17" TopLine="214"/>
+        <Caret Line="152" Column="20" TopLine="128"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="139" Column="5" TopLine="105"/>
+        <Caret Line="154" Column="25" TopLine="143"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="197" Column="5" TopLine="159"/>
+        <Caret Line="156" TopLine="142"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="249" Column="14" TopLine="217"/>
+        <Caret Line="165" Column="3" TopLine="161"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="140" Column="5" TopLine="106"/>
+        <Caret Line="82" Column="5" TopLine="66"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="12" Column="79"/>
+        <Caret Line="167" Column="15" TopLine="153"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="60" Column="15" TopLine="44"/>
+        <Caret Line="185" Column="25" TopLine="164"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="13" Column="15"/>
+        <Caret Line="157"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="127" Column="18" TopLine="107"/>
+        <Caret Line="160" Column="18" TopLine="160"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="128" Column="36" TopLine="106"/>
+        <Caret Line="167" Column="2" TopLine="161"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="127" Column="55" TopLine="121"/>
+        <Caret Line="190" Column="5" TopLine="160"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="128" Column="18" TopLine="118"/>
+        <Caret Line="171" Column="16" TopLine="147"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="100" Column="3" TopLine="96"/>
+        <Caret Line="178" Column="21" TopLine="65"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="101" Column="3" TopLine="97"/>
+        <Caret Line="161" Column="25" TopLine="65"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="103" Column="3" TopLine="99"/>
+        <Caret Line="160" Column="10" TopLine="140"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="283" Column="39" TopLine="47"/>
+        <Caret Line="138" Column="36" TopLine="116"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="78" Column="55" TopLine="120"/>
+        <Caret Line="70" Column="51" TopLine="62"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="82" Column="51" TopLine="63"/>
+        <Caret Line="163" Column="17" TopLine="53"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="156" Column="34" TopLine="138"/>
+        <Caret Line="140" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="163" Column="18" TopLine="138"/>
+        <Caret Line="162" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="178" TopLine="156"/>
+        <Caret Line="155" TopLine="130"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="185" Column="53" TopLine="159"/>
+        <Caret Line="168" Column="5" TopLine="135"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="186" Column="53" TopLine="160"/>
+        <Caret Line="170" Column="5" TopLine="136"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="187" Column="53" TopLine="161"/>
+        <Caret Line="171" TopLine="143"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="189" Column="53" TopLine="163"/>
+        <Caret Line="176" Column="5" TopLine="142"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="269" Column="5" TopLine="267"/>
+        <Caret Line="198" Column="52" TopLine="186"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="337" Column="5" TopLine="337"/>
+        <Caret Line="165" Column="38" TopLine="148"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="264" Column="5" TopLine="264"/>
+        <Caret Line="189" Column="5" TopLine="156"/>
       </Position>
       <Position>
         <Filename Value="freshkeydownu.pas"/>
-        <Caret Line="306" Column="5" TopLine="304"/>
+        <Caret Line="174" Column="5" TopLine="140"/>
       </Position>
     </JumpHistory>
     <RunParams>
