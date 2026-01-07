@@ -28,6 +28,9 @@ type
     MainMenu1: TMainMenu;
     FileStuff: TMenuItem;
     Load: TMenuItem;
+    Find: TMenuItem;
+    FindText: TMenuItem;
+    Replace: TMenuItem;
     Printout: TMenuItem;
     clearprintout: TMenuItem;
     copyprintout: TMenuItem;
@@ -105,8 +108,8 @@ begin
   if frReplaceAll in ReplaceDialog1.Options then
   begin
     // Clear current selection first
-    SynEdit1.SelectAll;
-    SynEdit1.SelText := '';
+    //SynEdit1.SelectAll;
+    //SynEdit1.SelText := '';
 
     Options := [ssoReplace, ssoReplaceAll];
     if frMatchCase in ReplaceDialog1.Options then
@@ -159,8 +162,8 @@ begin
   if not (frDown in ReplaceDialog1.Options) then Include(Options, ssoBackwards);
 
   // If SearchReplace returns 0, it means no match was found
-  if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
-    ShowMessage('Match not found for: ' + ReplaceDialog1.FindText);
+  //if SynEdit1.SearchReplace(ReplaceDialog1.FindText, '', Options) = 0 then
+  //  ShowMessage('Match not found for: ' + ReplaceDialog1.FindText);
 
   // Force SynEdit to scroll to the found text
   SynEdit1.SetFocus;
@@ -181,8 +184,8 @@ begin
 
   if FoundCount = 0 then
   begin
-    ShowMessage('Text not found');
-    // Reset to start position for next search
+    //ShowMessage('Text not found');
+     //Reset to start position for next search
     SynEdit1.CaretXY := Point(1, 1);
   end;
 end;
