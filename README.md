@@ -6,7 +6,7 @@ A Lazarus/Free Pascal editor for HP calculator programs.
 
 - Auto quotes  LBL "CATS"   <- LBL CATS`<ENTER>`  
                RCL+ "DOGS"  <- RCL+ DOGS`<ENTER>`  
-               LBL j        <- LBL j`<ENTER>`
+               LBL a        <- LBL a`<ENTER>`
 - Toggle programming mode of Plus42 from the editor
 - Export to Plus42 from the editor.
 - 2368*`<ENTER>` becomes  
